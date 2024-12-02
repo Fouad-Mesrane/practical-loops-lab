@@ -1,5 +1,5 @@
 //Part 1: Fizz Buzz
-
+/* 
 for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0 && i % 5 === 0) {
     console.log(` ${i} Fizz Buzz`);
@@ -40,4 +40,50 @@ while (number <= 20) {
   }
 
   number++; // Move to the next number
+}
+ */
+
+// part 3
+
+console.log("==================================");
+
+
+
+
+const data = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26";
+
+
+let cell1 = "";
+let cell2 = "";
+let cell3 = "";
+let cell4 = "";
+let currentData = "";
+let counter = 1;
+for (let i = 0; i < data.length; i++) {
+  if (data[i] === ',' || data[i] === `\n`) {
+    if (counter === 1) {
+      cell1 = currentData
+    } else if (counter === 2) {
+      cell2 = currentData
+    } else if (counter === 3) {
+      cell3 = currentData
+    } else if (counter === 4) {
+      cell4 = currentData
+      
+    }
+    counter++
+    currentData = ""
+    if (data[i] === `\n` ) {
+      console.log( cell2, cell3, cell4);
+      cell1 = cell2 = cell3 = cell4 = ""; // Reset cells
+      counter = 1;
+    }
+  } else {
+    if(data[i]!=="\n"){
+      currentData += data[i]
+    }
+  }
+  if (i === data.length - 1){
+    console.log(cell1, cell2, cell3, cell4);
+  }
 }
